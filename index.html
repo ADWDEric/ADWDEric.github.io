@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADWDERIC Research Lab</title>
+    <title>ADWDERIC LAB</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -74,6 +74,12 @@
         }
         
         .content-wrapper { position: relative; z-index: 10; }
+
+        /* 除首页(hero)外，所有区块内容左侧留出安全区，避免侵入固定的竖排 ADWDERIC 区域 */
+        .content-wrapper > section:not(#hero),
+        .content-wrapper > footer {
+            padding-left: clamp(3.5rem, 7vw, 8rem);
+        }
         
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: var(--bg-secondary); }
@@ -438,7 +444,7 @@
         <nav id="siteNav" class="fixed top-0 left-0 right-0 z-50 px-3 py-1 backdrop-blur-xl" style="background: rgba(6, 9, 15, 0.85); border-bottom: 1px solid var(--border); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); will-change: transform;">
             <div class="flex items-center justify-between" style="padding-left: 2.8rem;">
                 <div class="flex items-center gap-3">
-                    <span class="font-mono text-xs tracking-[0.2em]" style="color: #ffffff;">ADWDERIC</span>
+                    <span class="font-mono text-xs tracking-[0.2em]" style="color: #ffffff;">ADWDERIC LAB</span>
                 </div>
                 
                 <div class="hidden md:flex items-center gap-10">
@@ -527,146 +533,31 @@
             </div>
         </section>
         
-        <!-- Projects Section -->
-        <section id="projects" class="py-24 px-6">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex items-center gap-4 mb-12 reveal">
-                    <div class="w-16 h-px" style="background: linear-gradient(90deg, var(--accent), transparent);"></div>
-                    <h2 class="font-mono text-xs tracking-[0.2em]" style="color: var(--accent);">FEATURED PROJECTS</h2>
+        <!-- Projects Section (软件介绍)：以左侧 ADWDERIC 竖条为参考，缩放时相对位置不变 -->
+        <section id="projects" class="py-12 px-6">
+            <div class="max-w-5xl" style="margin-left: 0;">
+                <!-- 大标题：左对齐竖条参考线，字号随窗口等比 -->
+                <div class="text-left mb-10 reveal">
+                    <h1 class="font-mono font-bold tracking-tight" style="color: var(--accent); font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1;">ToFile ></h1>
                 </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <article class="project-card rounded-xl p-6 reveal group">
-                        <div class="scan-line"></div>
-                        <div class="hex-border rounded-xl"></div>
-                        <div class="flex items-start justify-between mb-5">
-                            <div class="icon-container float-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-                                </svg>
-                            </div>
-                            <span class="tag">QUANTUM</span>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-3 group-hover:text-[var(--accent)] transition-colors">Quantum Entanglement Protocol</h3>
-                        <p class="text-sm mb-5 leading-relaxed" style="color: var(--muted);">Novel quantum communication protocol achieving 99.7% fidelity over 100km fiber optic channels.</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <div class="status-dot"></div>
-                                <span class="font-mono text-[10px]" style="color: var(--accent);">ACTIVE</span>
-                            </div>
-                            <span class="font-mono text-[10px]" style="color: var(--muted);">v2.4.1</span>
-                        </div>
-                    </article>
-                    
-                    <article class="project-card rounded-xl p-6 reveal group" style="animation-delay: 0.1s;">
-                        <div class="scan-line"></div>
-                        <div class="hex-border rounded-xl"></div>
-                        <div class="flex items-start justify-between mb-5">
-                            <div class="icon-container float-icon" style="animation-delay: 0.5s;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
-                                    <path d="M12 2a9 9 0 0 1 9 9c0 3.5-2.5 6.5-6 8v3h-6v-3c-3.5-1.5-6-4.5-6-8a9 9 0 0 1 9-9z"/><path d="M9 21h6"/><circle cx="12" cy="11" r="3"/>
-                                </svg>
-                            </div>
-                            <span class="tag">NEURAL</span>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-3 group-hover:text-[var(--accent)] transition-colors">NeuroSync Architecture</h3>
-                        <p class="text-sm mb-5 leading-relaxed" style="color: var(--muted);">Brain-computer interface framework enabling real-time neural signal processing with sub-ms latency.</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <div class="status-dot" style="background: var(--warning);"></div>
-                                <span class="font-mono text-[10px]" style="color: var(--warning);">BETA</span>
-                            </div>
-                            <span class="font-mono text-[10px]" style="color: var(--muted);">v0.9.0</span>
-                        </div>
-                    </article>
-                    
-                    <article class="project-card rounded-xl p-6 reveal group" style="animation-delay: 0.2s;">
-                        <div class="scan-line"></div>
-                        <div class="hex-border rounded-xl"></div>
-                        <div class="flex items-start justify-between mb-5">
-                            <div class="icon-container float-icon" style="animation-delay: 1s;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
-                                    <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
-                                </svg>
-                            </div>
-                            <span class="tag">DISTRIBUTED</span>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-3 group-hover:text-[var(--accent)] transition-colors">MeshStream Engine</h3>
-                        <p class="text-sm mb-5 leading-relaxed" style="color: var(--muted);">Distributed computing platform achieving 10^6 concurrent connections with linear scalability.</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <div class="status-dot"></div>
-                                <span class="font-mono text-[10px]" style="color: var(--accent);">STABLE</span>
-                            </div>
-                            <span class="font-mono text-[10px]" style="color: var(--muted);">v3.1.0</span>
-                        </div>
-                    </article>
-                    
-                    <article class="project-card rounded-xl p-6 reveal group" style="animation-delay: 0.3s;">
-                        <div class="scan-line"></div>
-                        <div class="hex-border rounded-xl"></div>
-                        <div class="flex items-start justify-between mb-5">
-                            <div class="icon-container float-icon" style="animation-delay: 1.5s;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-                                </svg>
-                            </div>
-                            <span class="tag">CRYPTOGRAPHY</span>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-3 group-hover:text-[var(--accent)] transition-colors">ZeroKnowledge Prover</h3>
-                        <p class="text-sm mb-5 leading-relaxed" style="color: var(--muted);">ZK-SNARK implementation with custom circuit compiler achieving 40% proof size reduction.</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <div class="status-dot"></div>
-                                <span class="font-mono text-[10px]" style="color: var(--accent);">ACTIVE</span>
-                            </div>
-                            <span class="font-mono text-[10px]" style="color: var(--muted);">v1.0.0</span>
-                        </div>
-                    </article>
-                    
-                    <article class="project-card rounded-xl p-6 reveal group" style="animation-delay: 0.4s;">
-                        <div class="scan-line"></div>
-                        <div class="hex-border rounded-xl"></div>
-                        <div class="flex items-start justify-between mb-5">
-                            <div class="icon-container float-icon" style="animation-delay: 2s;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
-                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
-                                </svg>
-                            </div>
-                            <span class="tag">ML</span>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-3 group-hover:text-[var(--accent)] transition-colors">TensorForge</h3>
-                        <p class="text-sm mb-5 leading-relaxed" style="color: var(--muted);">Custom tensor accelerator achieving 8x inference speedup on transformer architectures.</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <div class="status-dot" style="background: var(--error);"></div>
-                                <span class="font-mono text-[10px]" style="color: var(--error);">ARCHIVED</span>
-                            </div>
-                            <span class="font-mono text-[10px]" style="color: var(--muted);">v2.0.0</span>
-                        </div>
-                    </article>
-                    
-                    <article class="project-card rounded-xl p-6 reveal group" style="animation-delay: 0.5s;">
-                        <div class="scan-line"></div>
-                        <div class="hex-border rounded-xl"></div>
-                        <div class="flex items-start justify-between mb-5">
-                            <div class="icon-container float-icon" style="animation-delay: 2.5s;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-                                </svg>
-                            </div>
-                            <span class="tag">REAL-TIME</span>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-3 group-hover:text-[var(--accent)] transition-colors">ChronoSync</h3>
-                        <p class="text-sm mb-5 leading-relaxed" style="color: var(--muted);">Distributed clock synchronization achieving nanosecond precision across global networks.</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <div class="status-dot"></div>
-                                <span class="font-mono text-[10px]" style="color: var(--accent);">ACTIVE</span>
-                            </div>
-                            <span class="font-mono text-[10px]" style="color: var(--muted);">v1.2.3</span>
-                        </div>
-                    </article>
+
+                <!-- 两张图片：容器宽随视口，x/y/size 全为相对容器的百分比 -->
+                <div class="relative reveal" style="aspect-ratio: 16 / 9;">
+                    <!-- 图1 软件图标 -->
+                    <figure class="rounded-xl overflow-hidden" style="position: absolute; left: -0%; top: -15%; width: 40%;">
+                        <img src="Tofileicon.png" alt="软件图标" class="w-full" style="display:block; aspect-ratio: 1 / 1; object-fit: contain; padding: 4%;">
+                    </figure>
+                    <!-- 图2 软件截图 -->
+                    <figure class="rounded-xl overflow-hidden" style="position: absolute; left: 50%; top: 18%; width: 100%;">
+                        <img src="Tofile1.png" alt="软件界面截图" class="w-full" style="display:block; aspect-ratio: 3823 / 1800; object-fit: cover;">
+                    </figure>
+                    <!-- 一段文字：与图片一致的绝对定位风格，相对容器百分比排版 -->
+                    <p class="leading-relaxed text-left" style="text-indent: 2em; position: absolute; left: 45%; top: -10%; width: 105%; color: #ffffff; font-size: clamp(0.95rem, 1.6vw, 1.35rem); line-height: 1.7;">
+                        ToFile-web 是一套面向现代协作场景的轻量级文件管理与内容共享平台，基于 Flask 构建，集文件存储、分块上传、即时预览与在线分享于一体。系统支持最大 10GB 文件的断点续传与 100MB 内资源的秒级预览，配合分享链接机制与内置留言板，让资料流转与团队沟通在同一空间内自然闭环，兼具高性能与极简部署体验。
+                    </p>
+                    <p class="leading-relaxed text-left" style="text-indent: 2em; position: absolute; left: 0%; top: 55%; width: 45%; color: #ffffff; font-size: clamp(0.95rem, 1.6vw, 1.35rem); line-height: 1.7;">
+                        依托线程池并发调度与本地化缓存策略，ToFile-web 在保证传输稳定的同时显著降低资源开销，可随取随用、即开即用。无论是个人资料归档，还是小团队间的协同分发，它都以清晰的架构、优雅的交互和零依赖的运维成本，重新定义了"轻量而不简陋"的文件服务范式。
+                    </p>
                 </div>
             </div>
         </section>
@@ -913,6 +804,9 @@
         let animationId = null;
         
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // 跨函数共享：滚动"挣脱力度"比例（0=刚吸住，1=达阈值即将翻页），供左侧 ADWDERIC 加粗联动
+        const smoothScrollState = { accumRatio: 0, offHero: false };
         
         // === Particle Class ===
         class Particle {
@@ -1157,9 +1051,9 @@
                 letters.forEach((el, i) => {
                     const heroRect = heroRects[i];
                     const sideRect = sideRects[i];
-                    const local = fly;
 
-                    if (heroRect && sideRect && local > 0) {
+                    if (cur < 1 && heroRect && sideRect && fly > 0) {
+                        // 首页飞行态：字母从中央标题飞入左侧竖排
                         const hcx = heroRect.left + heroRect.width / 2;
                         const hcy = heroRect.top + heroRect.height / 2;
                         const scx = sideRect.left + sideRect.width / 2;
@@ -1167,11 +1061,30 @@
                         const dx0 = hcx - scx;
                         const dy0 = hcy - scy;
                         const scale0 = heroRect.height / sideRect.height;
-                        const dx = LERP(dx0, 0, local);
-                        const dy = LERP(dy0, 0, local);
-                        const scale = LERP(scale0, 1, local);
+                        const dx = LERP(dx0, 0, fly);
+                        const dy = LERP(dy0, 0, fly);
+                        const scale = LERP(scale0, 1, fly);
                         el.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(' + scale + ')';
-                        el.style.opacity = clamp01(local * 1.5);
+                        el.style.opacity = clamp01(fly * 1.5);
+                        el.style.fontWeight = 700;
+                    } else if (cur >= 1) {
+                        // 非首页（已离开 hero）：字母固定在左侧竖排，随"挣脱力度"依次变为 --accent
+                        const N = letters.length;
+                        const raw = smoothScrollState.accumRatio;        // 正向=向下, 负向=向上
+                        const ratio = Math.min(1, Math.abs(raw));        // 0=无, 1=满
+                        // 依次点亮：pos 从 0 走到 N，每个字母占 1 个区间，任意时刻只有一个在过渡
+                        const pos = ratio * N;
+                        // 向下滚动：从上(A)到下依次变绿；向上滚动：从下(C)到上依次变绿
+                        const idx = raw < 0 ? (N - 1 - i) : i;
+                        const lp = clamp01(pos - idx);
+                        // 从默认前景色 --fg(#e4e9f2) 插值到 --accent(#00ffc8)
+                        const r = Math.round(LERP(228, 0, lp));
+                        const g = Math.round(LERP(233, 255, lp));
+                        const b = Math.round(LERP(242, 200, lp));
+                        el.style.transform = 'translate(0,0) scale(1)';
+                        el.style.opacity = 1;
+                        el.style.color = 'rgb(' + r + ',' + g + ',' + b + ')';
+                        el.style.textShadow = lp > 0.05 ? '0 0 ' + (4 + lp * 10) + 'px rgba(0,255,200,' + (lp * 0.6) + ')' : 'none';
                     } else {
                         el.style.opacity = 0;
                     }
@@ -1210,30 +1123,60 @@
             else render();
         }
 
-        // === 惯性平滑滚动（消除浏览器原生"一格一格"的顿挫感）===
-        // 思路：拦截 wheel / 键盘 / 触摸，累加目标位置，用 rAF 缓动逐帧 scrollTo。
+        // === 带阻尼的滚动吸附（"磁性翻页" / 强制视差翻页）===
+        // 思路：页面像被磁铁吸住，必须用较大力度滚动、累计位移超过阈值
+        // （如屏高的 30%）才"挣脱"并带阻尼缓动切换到相邻页；未达阈值则回弹吸附当前页。
         function initSmoothScroll() {
             if (prefersReducedMotion) return;  // 尊重无障碍设置，保留原生滚动
 
-            const EASE = 0.14;        // 惯性系数（越小越柔顺、越大越跟手）
-            const WHEEL_MULT = 1.0;   // 滚轮灵敏度
+            const UNLOCK_RATIO = 0.7;   // 解锁阈值：累计滚动位移需达到屏高的 75% 才翻页
+            const EASE = 0.10;           // 翻页缓动系数（越小越"阻尼/柔"，越大越跟手）
+            const WHEEL_SENS = 1.0;      // 滚轮灵敏度
+            const SCROLL_GAIN = 0.6;     // 累计增益：<1 时同样滚动只积累一半进度，需要滚更长才翻页
 
-            let targetY = window.scrollY;
-            let currentY = window.scrollY;
-            let rafId = null;
-            let running = false;
+            // 收集所有可吸附区块的顶端位置（按文档顺序）
+            const sections = Array.from(document.querySelectorAll(
+                '#hero, #projects, #research, #publications, #about, footer'
+            ));
+            function pageTops() {
+                return sections.map(s => s.getBoundingClientRect().top + window.scrollY);
+            }
+            let tops = pageTops();
+            window.addEventListener('resize', () => { tops = pageTops(); });
 
             function clampY(y) {
                 const max = document.documentElement.scrollHeight - window.innerHeight;
                 return Math.max(0, Math.min(max, y));
             }
+            function pageCount() { return tops.length; }
+            function currentIndex() {
+                const y = window.scrollY;
+                let idx = 0;
+                for (let i = 0; i < tops.length; i++) {
+                    if (y >= tops[i] - window.innerHeight * 0.5) idx = i;
+                }
+                return idx;
+            }
+
+            // 动画状态
+            let targetY = window.scrollY;
+            let currentY = window.scrollY;
+            let rafId = null;
+            let running = false;
+            let lockIndex = currentIndex();   // 当前被"吸住"的页
+            let accum = 0;                      // 累计解锁进度（带阻尼，未达阈值时回弹归零）
+            let locked = true;                  // 是否处于被吸住状态
 
             function loop() {
                 currentY += (targetY - currentY) * EASE;
-                // 防抖：足够接近时直接对齐并停止，节省资源
                 if (Math.abs(targetY - currentY) < 0.4) {
                     currentY = targetY;
                     window.scrollTo(0, currentY);
+                    // 到达目标页：重置吸附状态，累计位移清零，避免残留"力度"串页
+                    lockIndex = currentIndex();
+                    locked = true;
+                    accum = 0;
+                    smoothScrollState.accumRatio = 0;
                     running = false;
                     rafId = null;
                     return;
@@ -1241,63 +1184,97 @@
                 window.scrollTo(0, currentY);
                 rafId = requestAnimationFrame(loop);
             }
-
             function ensureRunning() {
                 if (!running) {
                     running = true;
                     rafId = requestAnimationFrame(loop);
                 }
             }
+            function goToPage(i) {
+                i = Math.max(0, Math.min(pageCount() - 1, i));
+                lockIndex = i;
+                locked = true;
+                accum = 0;
+                targetY = clampY(tops[i]);
+                ensureRunning();
+            }
 
-            // 鼠标滚轮：阻止原生离散滚动，改为目标累加
+            // 累计解锁进度；返回是否已"挣脱"
+            function addAccum(delta) {
+                accum += delta * SCROLL_GAIN;
+                const threshold = window.innerHeight * UNLOCK_RATIO;
+                // 暴露比例给左侧 ADWDERIC 加粗联动（A->C）
+                smoothScrollState.accumRatio = Math.max(-1, Math.min(1, accum / threshold));
+                if (locked) {
+                    if (accum > threshold) {
+                        // 向下挣脱
+                        locked = false;
+                        accum = 0;
+                        smoothScrollState.accumRatio = 0;
+                        goToPage(lockIndex + 1);
+                        return true;
+                    } else if (accum < -threshold) {
+                        // 向上挣脱
+                        locked = false;
+                        accum = 0;
+                        smoothScrollState.accumRatio = 0;
+                        goToPage(lockIndex - 1);
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            // 鼠标滚轮：阻止原生离散滚动，"攒力度"解锁翻页
             window.addEventListener('wheel', (e) => {
                 e.preventDefault();
-                // 触控板两指滑动可能是水平+垂直，统一取主导方向
                 const delta = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
-                targetY = clampY(targetY + delta * WHEEL_MULT);
-                ensureRunning();
+                if (locked) {
+                    addAccum(delta * WHEEL_SENS);
+                } else {
+                    // 已进入翻页动画，吸收滚动以免抖动
+                }
             }, { passive: false });
 
             // 键盘：方向键 / PageUp / PageDown / Home / End / 空格
             window.addEventListener('keydown', (e) => {
                 const tag = (e.target && e.target.tagName) || '';
                 if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-                const step = window.innerHeight * 0.85;
                 let handled = true;
                 switch (e.key) {
-                    case 'PageDown': case ' ': targetY = clampY(targetY + step); break;
-                    case 'PageUp': targetY = clampY(targetY - step); break;
-                    case 'ArrowDown': targetY = clampY(targetY + 90); break;
-                    case 'ArrowUp': targetY = clampY(targetY - 90); break;
-                    case 'Home': targetY = 0; break;
-                    case 'End': targetY = clampY(Infinity); break;
+                    case 'PageDown': case ' ': addAccum(window.innerHeight * (UNLOCK_RATIO + 0.05)); break;
+                    case 'PageUp': addAccum(-window.innerHeight * (UNLOCK_RATIO + 0.05)); break;
+                    case 'ArrowDown': addAccum(window.innerHeight * 0.12); break;
+                    case 'ArrowUp': addAccum(-window.innerHeight * 0.12); break;
+                    case 'Home': targetY = clampY(0); lockIndex = 0; locked = true; accum = 0; smoothScrollState.accumRatio = 0; ensureRunning(); break;
+                    case 'End': goToPage(pageCount() - 1); break;
                     default: handled = false;
                 }
-                if (handled) { e.preventDefault(); ensureRunning(); }
+                if (handled) { e.preventDefault(); }
             });
 
-            // 触摸滑动：记录起点，按位移反向驱动目标
-            let touchStartY = 0, touchStartTarget = 0;
+            // 触摸滑动：按位移驱动解锁进度
+            let touchStartY = 0;
             window.addEventListener('touchstart', (e) => {
                 touchStartY = e.touches[0].clientY;
-                touchStartTarget = targetY;
             }, { passive: true });
             window.addEventListener('touchmove', (e) => {
                 const dy = touchStartY - e.touches[0].clientY;
-                targetY = clampY(touchStartTarget + dy);
-                ensureRunning();
+                if (locked) addAccum(dy * WHEEL_SENS);
             }, { passive: true });
 
-            // 用户用滚动条拖拽 / 浏览器其它方式改变滚动时，同步目标，避免回弹
+            // 用户用滚动条拖拽 / 浏览器其它方式改变滚动时，重新吸附到最近页
             window.addEventListener('scroll', () => {
-                // 若本次 scroll 不是由我们 loop 触发的，则把目标对齐到实际位置
                 if (!running) {
-                    targetY = window.scrollY;
-                    currentY = window.scrollY;
+                    const idx = currentIndex();
+                    lockIndex = idx;
+                    locked = true;
+                    accum = 0;
+                    currentY = targetY = window.scrollY;
                 }
             }, { passive: true });
 
-            // 锚点跳转（导航菜单）：拦截并平滑滚动到目标
+            // 锚点跳转（导航菜单）：直接吸附到目标页
             document.querySelectorAll('a[href^="#"]').forEach(a => {
                 a.addEventListener('click', (e) => {
                     const id = a.getAttribute('href');
@@ -1305,20 +1282,20 @@
                     const el = document.querySelector(id);
                     if (!el) return;
                     e.preventDefault();
-                    targetY = clampY(el.getBoundingClientRect().top + window.scrollY);
-                    ensureRunning();
+                    const i = sections.indexOf(el);
+                    if (i >= 0) goToPage(i);
+                    else { targetY = clampY(el.getBoundingClientRect().top + window.scrollY); ensureRunning(); }
                 });
             });
 
-            // 让外部（如侧边标题的 update）能感知到平滑已在运行
             document.documentElement.classList.add('smooth-ready');
-            // 初始化目标/当前，避免首帧跳变
             targetY = currentY = window.scrollY;
+            lockIndex = currentIndex();
 
             // 左上角 logo：点击滚回首页顶部
             const brand = document.getElementById('brandHome');
             if (brand) {
-                const goHome = () => { targetY = clampY(0); ensureRunning(); };
+                const goHome = () => { targetY = clampY(0); lockIndex = 0; locked = true; accum = 0; ensureRunning(); };
                 brand.addEventListener('click', goHome);
             }
         }
